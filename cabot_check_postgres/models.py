@@ -22,7 +22,7 @@ class PostgresStatusCheck(StatusCheck):
     dbuser = models.TextField(
         help_text='Postgres user'
     )
-    dbport = models.TextField(
+    dbpassword = models.TextField(
         help_text='Postgres password'
     )
 
