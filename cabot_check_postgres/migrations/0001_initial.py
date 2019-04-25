@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('port', models.PositiveIntegerField(help_text=b'Postgres port', null=True)),
                 ('dbname', models.TextField(help_text=b'Postgres database name', null=True)),
                 ('user', models.TextField(help_text=b'Postgres user', null=True)),
-                ('port', models.TextField(help_text=b'Postgres password', null=True)),
+                ('password', models.TextField(help_text=b'Postgres password', null=True)),
             ],
             options={
                 'abstract': False,
