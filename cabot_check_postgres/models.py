@@ -19,10 +19,10 @@ class PostgresStatusCheck(StatusCheck):
     dbname = models.TextField(
         help_text='Postgres database name'
     )
-    user = models.TextField(
+    dbuser = models.TextField(
         help_text='Postgres user'
     )
-    port = models.TextField(
+    dbport = models.TextField(
         help_text='Postgres password'
     )
 
