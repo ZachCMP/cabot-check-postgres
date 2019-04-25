@@ -37,12 +37,12 @@ class PostgresStatusCheckForm(StatusCheckForm):
         })
 
 
-class NetworkCheckCreateView(CheckCreateView):
+class PostgresCheckCreateView(CheckCreateView):
     model = PostgresStatusCheck
     form_class = PostgresStatusCheckForm
 
 
-class NetworkCheckUpdateView(CheckUpdateView):
+class PostgresCheckUpdateView(CheckUpdateView):
     model = PostgresStatusCheck
     form_class = PostgresStatusCheckForm
 
