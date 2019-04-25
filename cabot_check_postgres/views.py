@@ -6,18 +6,21 @@ from cabot.cabotapp.models import StatusCheck
 from cabot.cabotapp.views import (CheckCreateView, CheckUpdateView,
                                   StatusCheckForm, base_widgets)
 
-from .models import NetworkStatusCheck
+from .models import PostgresStatusCheck
 
 
-class NetworkStatusCheckForm(StatusCheckForm):
+class PostgresStatusCheckForm(StatusCheckForm):
     symmetrical_fields = ('service_set', 'instance_set')
 
     class Meta:
-        model = NetworkStatusCheck
+        model = PostgresStatusCheck
         fields = (
             'name',
             'host',
             'port',
+            'dbname',
+            'user',
+            'password',
             'timeout',
             'frequency',
             'active',
@@ -35,16 +38,16 @@ class NetworkStatusCheckForm(StatusCheckForm):
 
 
 class NetworkCheckCreateView(CheckCreateView):
-    model = NetworkStatusCheck
-    form_class = NetworkStatusCheckForm
+    model = PostgresStatusCheck
+    form_class = PostgresStatusCheckForm
 
 
 class NetworkCheckUpdateView(CheckUpdateView):
-    model = NetworkStatusCheck
-    form_class = NetworkStatusCheckForm
+    model = PostgresStatusCheck
+    form_class = PostgresStatusCheckForm
 
 
 def duplicate_check(request, pk):
     pc = StatusCheck.objects.get(pk=pk)
     npk = pc.duplicate()
-    return HttpResponseRedirect(reverse('update-network-check', kwargs={'pk': npk}))
+    return HttpResponseRedirect(reverse('update-status-check', kwargs={'pk': npk}))

@@ -11,16 +11,19 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('cabotapp', '0006_auto_20170821_1000'),
+        ('cabotapp', '0006_auto_20190425_1000'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='NetworkStatusCheck',
+            name='PostgresStatusCheck',
             fields=[
                 ('statuscheck_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='cabotapp.StatusCheck')),
-                ('host', models.TextField(help_text=b'Host to check.', null=True)),
-                ('port', models.PositiveIntegerField(help_text=b'Port to check.', null=True)),
+                ('host', models.TextField(help_text=b'Postgres host', null=True)),
+                ('port', models.PositiveIntegerField(help_text=b'Postgres port', null=True)),
+                ('dbname', models.TextField(help_text=b'Postgres database name', null=True)),
+                ('user', models.TextField(help_text=b'Postgres user', null=True)),
+                ('port', models.TextField(help_text=b'Postgres password', null=True)),
             ],
             options={
                 'abstract': False,

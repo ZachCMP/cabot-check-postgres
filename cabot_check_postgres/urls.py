@@ -1,20 +1,20 @@
 from django.conf.urls import url
 
-from .views import (NetworkCheckCreateView, NetworkCheckUpdateView,
+from .views import (PostgresCheckCreateView, PostgresCheckUpdateView,
                     duplicate_check)
 
 urlpatterns = [
 
-    url(r'^networkcheck/create/',
-        view=NetworkCheckCreateView.as_view(),
-        name='create-network-check'),
+    url(r'^postgrescheck/create/',
+        view=PostgresCheckCreateView.as_view(),
+        name='create-postgres-check'),
 
-    url(r'^networkcheck/update/(?P<pk>\d+)/',
-        view=NetworkCheckUpdateView.as_view(),
-        name='update-network-check'),
+    url(r'^postgrescheck/update/(?P<pk>\d+)/',
+        view=PostgresCheckUpdateView.as_view(),
+        name='update-postgres-check'),
 
-    url(r'^networkcheck/duplicate/(?P<pk>\d+)/',
+    url(r'^postgrescheck/duplicate/(?P<pk>\d+)/',
         view=duplicate_check,
-        name='duplicate-network-check')
+        name='duplicate-postgres-check')
 
 ]
