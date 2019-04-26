@@ -1,4 +1,5 @@
 import socket
+import psycopg2
 
 from django.db import models
 
@@ -34,6 +35,15 @@ class PostgresStatusCheck(StatusCheck):
 
     def _run(self):
         result = StatusCheckResult(status_check=self)
+
+        try:
+            conn = psycopg2.connect(dbname=self.dbname, user=self.dbuser, password=self.dbpassword, host=self.host, port=self.post)
+            conn.close()
+        except Exception as e:
+            result.error = u'Error occurred: %s' % (e.message)
+            result.succeeded = False
+        else:
+            result.succeeded = True
 
         # try:
         #     s = socket.create_connection((self.host, self.port), self.timeout)
