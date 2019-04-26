@@ -37,7 +37,7 @@ class PostgresStatusCheck(StatusCheck):
         result = StatusCheckResult(status_check=self)
 
         try:
-            conn = psycopg2.connect(dbname=self.dbname, user=self.dbuser, password=self.dbpassword, host=self.host, port=self.post)
+            conn = psycopg2.connect(dbname=self.dbname, user=self.dbuser, password=self.dbpassword, host=self.host, port=self.port)
             conn.close()
         except Exception as e:
             result.error = u'Error occurred: %s' % (e.message)
@@ -54,7 +54,5 @@ class PostgresStatusCheck(StatusCheck):
         #     result.succeeded = False
         # else:
         #     result.succeeded = True
-
-        result.succeeded = True
 
         return result
