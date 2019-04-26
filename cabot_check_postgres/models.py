@@ -27,12 +27,6 @@ class PostgresStatusCheck(StatusCheck):
         help_text='Postgres password'
     )
 
-    # ('host', models.TextField(help_text=b'Postgres host', null=True)),
-    # ('port', models.PositiveIntegerField(help_text=b'Postgres port', null=True)),
-    # ('dbname', models.TextField(help_text=b'Postgres database name', null=True)),
-    # ('user', models.TextField(help_text=b'Postgres user', null=True)),
-    # ('port', models.TextField(help_text=b'Postgres password', null=True)),
-
     def _run(self):
         result = StatusCheckResult(status_check=self)
 
@@ -44,15 +38,5 @@ class PostgresStatusCheck(StatusCheck):
             result.succeeded = False
         else:
             result.succeeded = True
-
-        # try:
-        #     s = socket.create_connection((self.host, self.port), self.timeout)
-        #     s.shutdown(socket.SHUT_RDWR)
-        #     s.close()
-        # except Exception as e:
-        #     result.error = u'Error occurred: %s' % (e.message,)
-        #     result.succeeded = False
-        # else:
-        #     result.succeeded = True
 
         return result
